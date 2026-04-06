@@ -1,0 +1,87 @@
+body { margin:0; font-family:Poppins; background:#f5f7fa; }
+header { background:#2c3e50; color:white; padding:15px; display:flex; justify-content:space-between; }
+nav a { color:white; margin:10px; text-decoration:none; }
+.hero { background:url('images/bg.jpg'); height:300px; display:flex; justify-content:center; align-items:center; color:white; font-size:30px; }
+/* ===== Gallery Layout ===== */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    margin-top: 40px;
+    padding: 0 20px;
+}
+
+/* ===== Card Style ===== */
+.card {
+    background-color: #334155; /* dark card background */
+    border-radius: 15px;
+    text-align: center;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-decoration: none; /* remove underline */
+    color: white; /* card text */
+    display: flex;
+    flex-direction: column;
+}
+
+/* ===== Image Style ===== */
+.place-img {
+    width: 100%;
+    height: 180px; /* same height for all images */
+    object-fit: cover; /* preserves aspect ratio, crops if needed */
+    transition: transform 0.3s;
+}
+
+.card:hover .place-img {
+    transform: scale(1.1);
+}
+
+/* ===== Card Title ===== */
+.card h3 {
+    margin: 10px 0;
+    font-size: 1.2rem;
+    transition: color 0.3s;
+}
+
+.card:hover h3 {
+    color: #ffcc00;
+}
+
+/* ===== Page Background ===== */
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        color: white;
+        /* Background image */
+        background-image: url('images/background1.jpg');
+        background-size: cover;        
+        background-position: center;   
+        background-repeat: no-repeat;  
+        background-attachment: fixed;  
+    }
+
+/* Animations */
+.fade { animation: fadeIn 3s ease-in-out; }
+@keyframes fadeIn { from{opacity:0;} to{opacity:1;} }
+/* ===== About Us ===== */
+.about-us {
+    margin: 60px auto;
+    padding: 20px;
+    max-width: 800px;
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 15px;
+    color: #fff;
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+/* ===== Watermark ===== */
+.watermark {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.2);
+    pointer-events: none; /* clickable content not affected */
+    user-select: none;
+}

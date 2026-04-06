@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Himachal Tourism</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>Explore Himachal Pradesh</h1>
+    <nav>
+        <a href="login.html">Login</a>
+        <a href="register.html">Register</a>
+        <a href="contact.html">Contact</a>
+        <a href="payment.html">Payment</a>
+        <a href="admin.html">Admin</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <h2 class="fade" style="color: #ff5733;">Discover the Beauty of Mountains</h2>
+</section>
+
+<div class="gallery">
+
+    <a href="manali.html" class="card">
+        <img src="images/manali.jpg" class="place-img" alt="Manali">
+        <h3>Manali</h3>
+    </a>
+
+    <a href="shimla.html" class="card">
+        <img src="images/shimla.jpg" class="place-img" alt="Shimla">
+        <h3>Shimla</h3>
+    </a>
+
+    <a href="kasol.html" class="card">
+        <img src="images/kasol.jpg" class="place-img" alt="Kasol">
+        <h3>Kasol</h3>
+    </a>
+
+    <a href="chitkul.html" class="card">
+        <img src="images/chitkul.jpg" class="place-img" alt="Chitkul">
+        <h3>Chitkul</h3>
+    </a>
+
+    <a href="spiti.html" class="card">
+        <img src="images/spiti.jpg" class="place-img" alt="Spiti Valley">
+        <h3>Spiti</h3>
+    </a>
+
+    <a href="chamba.html" class="card">
+        <img src="images/chamba.jpg" class="place-img" alt="Chamba">
+        <h3>Chamba</h3>
+    </a>
+    <a href="dharamshala.html" class="card">
+        <img src="images/dharamshala.jpg" class="place-img" alt="Dharamshala">
+        <h3>Dharamshala</h3>
+    </a>
+
+    <a href="kullu.html" class="card">
+        <img src="images/kullu.jpg" class="place-img" alt="Kullu">
+        <h3>Kullu</h3>
+    </a>
+
+    <a href="rohru.html" class="card">
+        <img src="images/rohru.jpg" class="place-img" alt="Rohru">
+        <h3>Rohru</h3>
+    </a>
+    <a href="triund.html" class="card">
+        <img src="images/triund.jpg" class="place-img" alt="Triund">
+        <h3>Triund</h3>
+    </a>
+<!-- ===== About Us Section ===== -->
+<section class="about-us">
+    <h2>About Us</h2>
+    <p>
+        Hi, I am <strong>Sushant Sharma</strong>. This website showcases the beautiful destinations of Himachal Pradesh. 
+        Explore scenic valleys, hill stations, and cultural hotspots. My goal is to help travelers discover the 
+        hidden gems of this amazing state and help them with taxi , hotel bookings and guide services. click on contact for more.
+    </p>
+</section>
+
+<!-- ===== Watermark ===== -->
+<div class="watermark">© Created by CV</div>
+</div>
+
+<script>
+async function login() {
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    try {
+        const res = await fetch("http://localhost:3000/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ email, password })
+        });
+
+        const data = await res.text();
+        alert(data);
+
+        if (data === "Login Success") {
+            window.location.href = "index.html";
+        }
+
+    } catch (error) {
+        alert("Error connecting to server");
+        console.log(error);
+    }
+}
+</script>
+<script>
+    function openPage(place){
+        window.location.href = place + ".html";
+    }
+    </script>
+</body>
+</html>

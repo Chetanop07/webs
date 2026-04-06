@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Kasol</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <h1>Kasol</h1>
+    <a href="index.html">⬅ Back</a>
+</header>
+
+<div class="container">
+    <img src="images/kasol.jpg" class="place-img">
+
+    <h2>About Kasol</h2>
+    <p>
+        Kasol is a beautiful village in Parvati Valley, known for its scenic beauty,
+        riverside camping, trekking routes like Kheerganga, and vibrant cafe culture.
+        Location: 
+        Situated in the Parvati Valley, Himachal Pradesh, on the banks of the Parvati River, roughly 36 km from Kullu.
+        Vibe:
+        Known for its relaxed "hippie" culture, a unique blend of Indian and Israeli influences, and many cafés.
+        Best Time to Visit:
+         March to June (pleasant weather) or October to February (for cold, potential snowfall).
+        Key Attractions:
+        Trekking & Hiking: Starting point for treks like Kheerganga, Grahan, and Rasol.
+        Chalal Village: A short, easy hike from Kasol for riverside views.
+        Manikaran Sahib: Famous for hot springs and a gurudwara (approx. 4 km away).
+        Cafes: Famous for authentic Israeli dishes, pizzas, and coffee.
+        How to Reach: Best accessed by road from Bhuntar (nearest airport) or by bus from Delhi/Chandigarh via Bhuntar.
+    </p>
+
+    <h3>Top Attractions</h3>
+    <ul>
+        <li>Kheerganga Trek</li>
+        <li>Parvati River</li>
+        <li>Tosh Village</li>
+        <li>Manikaran Sahib</li>
+    </ul>
+
+    <!-- Review Section -->
+    <h3>Leave a Review ⭐</h3>
+    <form action="http://localhost:3000/review" method="POST">
+        <input type="hidden" name="place" value="kasol">
+        Rating: <input type="number" name="rating" min="1" max="5"><br><br>
+        <textarea name="review"></textarea><br><br>
+        <button type="submit">Submit</button>
+    </form>
+
+</div>
+
+</body>
+</html>

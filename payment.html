@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h2>Payment Gateway</h2>
+<form onsubmit="pay(event)">
+    Name: <input type="text" required><br>
+    Card Number: <input type="text" required><br>
+    Expiry: <input type="text" required><br>
+    CVV: <input type="password" required><br>
+    <button type="submit">Pay Now</button>
+</form>
+
+<script>
+function pay(e){
+    e.preventDefault();
+    alert("Payment Successful (Demo)");
+}
+</script>
+</body>
+</html>

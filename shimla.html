@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Shimla</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <h1>Shimla</h1>
+    <a href="index.html">⬅ Back</a>
+</header>
+
+<div class="container">
+    <img src="images/shimla.jpg" class="place-img">
+    <h2>About Shimla</h2>
+    <p>
+        Shimla, known as the "Queen of Hills," is the capital of Himachal Pradesh and a premier hill station in 
+        northern India, situated at an altitude of 2,205 meters. As the former summer capital of British India 
+        (since 1864), it boasts colonial architecture, the UNESCO-listed Kalka-Shimla Railway, and scenic Himalayan
+
+        Geography: Situated in the foothills of the Himalayas, spread across a 12km ridge.
+        Climate: Known for pleasant summers and chilly, snowy winters, making it a year-round destination. 
+    </p>
+
+    <h3>Top Attractions</h3>
+    <ul>
+        <li>Mall Road</li>
+        <li>The Ridge</li>
+        <li>Kufri</li>
+        <li>Jakhoo Temple</li>
+    </ul>
+
+    <!-- Review Section -->
+    <h3>Leave a Review ⭐</h3>
+    <form action="http://localhost:3000/review" method="POST">
+        <input type="hidden" name="place" value="shimla">
+        Rating: <input type="number" name="rating" min="1" max="5"><br><br>
+        <textarea name="review"></textarea><br><br>
+        <button type="submit">Submit</button>
+    </form>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1>Admin Dashboard</h1>
+<button onclick="loadData('users')">Users</button>
+<button onclick="loadData('bookings')">Bookings</button>
+<button onclick="loadData('reviews')">Reviews</button>
+<button onclick="loadData('contacts')">Contacts</button>
+
+<pre id="data"></pre>
+
+<script>
+async function loadData(type){
+    const res = await fetch('https://your-backend-url.onrender.com/admin/'+type);
+    const data = await res.json();
+    document.getElementById('data').innerText = JSON.stringify(data,null,2);
+}
+</script>
+</body>
+</html>

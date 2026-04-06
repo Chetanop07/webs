@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Contact & Booking</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.container {
+    width: 400px;
+    margin: 50px auto;
+    padding: 25px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.2);
+    animation: fadeIn 1s;
+}
+input, textarea, select, button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+}
+button {
+    background: #e67e22;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+button:hover {
+    background: #d35400;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Taxi & Hotel Booking</h2>
+
+    <form action="http://localhost:3000/contact" method="POST">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="text" name="phone" placeholder="Phone Number" required>
+
+        <select name="service">
+            <option value="Taxi">Taxi Booking</option>
+            <option value="Hotel">Hotel Booking</option>
+        </select>
+
+        <textarea name="message" placeholder="Enter details (date, location, etc.)"></textarea>
+
+        <button type="submit">Submit Request</button>
+    </form>
+</div>
+
+</body>
+</html>

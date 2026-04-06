@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Manali</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.container { padding:20px; animation: fadeIn 1.5s; }
+.review-box { margin-top:20px; }
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>Manali</h1>
+    <a href="index.html">⬅ Back</a>
+</header>
+
+<div class="container">
+    <img src="images/manali.jpg" class="place-img">
+
+    <h2>About Manali</h2>
+    <p>
+        Manali is a popular hill station in Himachal Pradesh's Kullu Valley, located at an altitude of 1,929 meters. 
+        Known for its scenic snow-capped peaks, pine forests, and the Beas River, it serves as a major tourist 
+        destination for adventure sports (paragliding, skiing) and a gateway to Lahaul and Ladakh via the Rohtang Pass.
+        
+        Location: Situated in the northern end of the Kullu Valley in the Himalayas.
+        Best Time to Visit: December to February for snow and skiing, and March to June for pleasant weather.
+       
+    </p>
+
+    <h3>Top Attractions</h3>
+    <ul>
+        <li>Solang Valley</li>
+        <li>Rohtang Pass</li>
+        <li>Hadimba Temple</li>
+        <li>Old Manali Cafes</li>
+    </ul>
+
+    <!-- Review Section -->
+    <div class="review-box">
+        <h3>Leave a Review ⭐</h3>
+        <form action="http://localhost:3000/review" method="POST">
+            <input type="hidden" name="place" value="manali">
+            Rating: <input type="number" name="rating" min="1" max="5" required><br><br>
+            <textarea name="review" placeholder="Write your review..." required></textarea><br><br>
+            <button type="submit">Submit Review</button>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
