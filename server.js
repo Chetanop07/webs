@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
@@ -78,3 +79,5 @@ mongoose.connect('mongodb+srv://chetan:bawa420@cluster0.ehw3von.mongodb.net/tour
 mongoose.connection.on('connected', ()=>{
     console.log("🔥 DB Name:", mongoose.connection.name);
 });
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
