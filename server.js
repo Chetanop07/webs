@@ -10,6 +10,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true })); // IMPORTANT
 app.use(cors());
 
+const path = require('path');
+app.use(express.static(path.join(__dirname, 'public')));
 // MongoDB connection (LOCAL)
 mongoose.connect('mongodb://127.0.0.1:27017/tourismDB')
 .then(()=>console.log("MongoDB Connected"))
