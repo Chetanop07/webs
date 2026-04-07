@@ -31,6 +31,7 @@
 </head>
 <body>
     <h1>Chamba</h1>
+    <div class="content">
     <img src="images/chamba.jpg" alt="Chamba">
     <p>Chamba is a scenic, historic town in Himachal Pradesh, India, founded in 920 AD by Raja Sahil Varman on the banks of the Ravi River. Known for its 10th-century temples, stunning mountain views (altitudes 2,000–21,000 ft), rich art, and the annual Minjar Mela festival, it serves as a major cultural district. 
     
@@ -42,5 +43,15 @@
         Economy: Primarily agricultural, with added, notable industries in craft and pharmaceuticals. 
     </p>
     <a href="index.html">Back to Home</a>
+     <div class="review-box">
+        <h3>Leave a Review ⭐</h3>
+        <form action="http://localhost:3000/review" method="POST">
+            <input type="hidden" name="place" value="manali">
+            Rating: <input type="number" name="rating" min="1" max="5" required><br><br>
+            <textarea name="review" placeholder="Write your review..." required></textarea><br><br>
+            <button type="submit">Submit Review</button>
+        </form>
+    </div>
+    </div>
 </body>
 </html>

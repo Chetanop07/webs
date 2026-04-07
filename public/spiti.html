@@ -31,6 +31,7 @@
 </head>
 <body>
     <h1>Spiti Valley</h1>
+     <div class="content">
     <img src="images/spiti.jpg" alt="Spiti Valley">
     <p>Spiti Valley, the "Middle Land" in Himachal Pradesh, is a high-altitude cold desert nestled between India and Tibet at over 12,500 feet. Known for its raw, rugged beauty,ancient Buddhist monasteries like Tabo and Key, and pristine landscapes, it serves as a secluded adventure destination featuring dramatic mountains, remote villages, and the world's highest polling station. 
        
@@ -51,5 +52,16 @@
         
         Spiti is not just a destination but an immersive experience into a culture and landscape that has remained largely untouched by rapid commercialization. </p>
     <a href="index.html">Back to Home</a>
+     <!-- Review Section -->
+    <div class="review-box">
+        <h3>Leave a Review ⭐</h3>
+        <form action="http://localhost:3000/review" method="POST">
+            <input type="hidden" name="place" value="manali">
+            Rating: <input type="number" name="rating" min="1" max="5" required><br><br>
+            <textarea name="review" placeholder="Write your review..." required></textarea><br><br>
+            <button type="submit">Submit Review</button>
+        </form>
+    </div>
+     </div>
 </body>
 </html>
