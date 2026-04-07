@@ -33,7 +33,9 @@ const Contact = mongoose.model('Contact', { name: String, phone: String, service
 // ----------------- Routes -----------------
 
 // Home route
-app.get('/', (req, res) => res.send("Server is running 🚀"));
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
 
 // Register
 app.post('/register', async (req, res) => {

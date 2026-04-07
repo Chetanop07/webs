@@ -111,3 +111,9 @@ height :150px;
   height: 180px;
   object-fit: cover;
 }
+.review-content p {
+    margin: 0;
+    font-size: 0.95em;
+    color: #333;  /* dark text for visibility */
+    line-height: 1.4;
+}

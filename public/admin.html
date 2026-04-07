@@ -1,40 +1,166 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Himachal Tourism - Admin</title>
+    <title>Admin Panel - Himachal Tourism</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        // Simple password protection
+        const ADMIN_PASSWORD = "420420420"; 
+        let entered = prompt("Enter Admin Password:");
+        if(entered !== ADMIN_PASSWORD){
+            alert("Incorrect password! Access denied.");
+            window.location.href = "index.html"; 
+        }
+    </script>
 </head>
-<body>
-  <h1>Admin Panel</h1>
-  <button onclick="fetchUsers()">View Users</button>
-  <button onclick="fetchBookings()">View Bookings</button>
-  <button onclick="fetchContacts()">View Contacts</button>
-  <button onclick="fetchReviews()">View Reviews</button>
+<body style="font-family: Arial, sans-serif; background:#f0f2f5; margin:0; padding:0;">
 
-  <pre id="output" style="background:#eee; padding:10px;"></pre>
+<header style="background:#2a5d84; color:white; padding:15px; text-align:center;">
+    <h1>Admin Panel - Himachal Tourism</h1>
+</header>
 
-  <script>
-    const BASE_URL = window.location.hostname.includes("localhost")
-      ? "http://localhost:3000"
-      : "https://webs-1-aya0.onrender.com";
+<nav style="display:flex; justify-content:center; margin:20px 0;">
+    <button onclick="showTab('users')" style="margin:0 10px; padding:10px 20px; cursor:pointer;">Users</button>
+    <button onclick="showTab('bookings')" style="margin:0 10px; padding:10px 20px; cursor:pointer;">Bookings</button>
+    <button onclick="showTab('reviews')" style="margin:0 10px; padding:10px 20px; cursor:pointer;">Reviews</button>
+    <button onclick="showTab('contacts')" style="margin:0 10px; padding:10px 20px; cursor:pointer;">Contacts</button>
+</nav>
 
-    async function fetchUsers() {
-      const res = await fetch(`${BASE_URL}/admin/users`);
-      document.getElementById("output").innerText = JSON.stringify(await res.json(), null, 2);
-    }
-    async function fetchBookings() {
-      const res = await fetch(`${BASE_URL}/admin/bookings`);
-      document.getElementById("output").innerText = JSON.stringify(await res.json(), null, 2);
-    }
-    async function fetchContacts() {
-      const res = await fetch(`${BASE_URL}/admin/contacts`);
-      document.getElementById("output").innerText = JSON.stringify(await res.json(), null, 2);
-    }
-    async function fetchReviews() {
-      const res = await fetch(`${BASE_URL}/admin/reviews`);
-      document.getElementById("output").innerText = JSON.stringify(await res.json(), null, 2);
-    }
-  </script>
+<div id="users" class="tab" style="display:none; padding:20px;">
+    <h2>Users</h2>
+    <table border="1" style="width:100%; border-collapse: collapse; color:#333; background:white;">
+        <thead>
+            <tr style="background:#2a5d84; color:white;">
+                <th>Name</th>
+                <th>Email</th>
+                <th>Password Hash</th>
+            </tr>
+        </thead>
+        <tbody id="usersTableBody"></tbody>
+    </table>
+</div>
+
+<div id="bookings" class="tab" style="display:none; padding:20px;">
+    <h2>Bookings</h2>
+    <table border="1" style="width:100%; border-collapse: collapse; color:#333; background:white;">
+        <thead>
+            <tr style="background:#2a5d84; color:white;">
+                <th>Name</th>
+                <th>Email</th>
+                <th>Destination</th>
+            </tr>
+        </thead>
+        <tbody id="bookingsTableBody"></tbody>
+    </table>
+</div>
+
+<div id="reviews" class="tab" style="display:none; padding:20px;">
+    <h2>Reviews</h2>
+    <table border="1" style="width:100%; border-collapse: collapse; color:#333; background:white;">
+        <thead>
+            <tr style="background:#2a5d84; color:white;">
+                <th>Place</th>
+                <th>Rating</th>
+                <th>Review</th>
+            </tr>
+        </thead>
+        <tbody id="reviewsTableBody"></tbody>
+    </table>
+</div>
+
+<div id="contacts" class="tab" style="display:none; padding:20px;">
+    <h2>Contacts</h2>
+    <table border="1" style="width:100%; border-collapse: collapse; color:#333; background:white;">
+        <thead>
+            <tr style="background:#2a5d84; color:white;">
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Service</th>
+                <th>Message</th>
+            </tr>
+        </thead>
+        <tbody id="contactsTableBody"></tbody>
+    </table>
+</div>
+
+<script>
+const BASE_URL = window.location.hostname.includes("localhost") 
+    ? "http://localhost:3000" 
+    : "https://webs-1-aya0.onrender.com";
+
+// Tab switching function
+function showTab(tabName){
+    document.querySelectorAll(".tab").forEach(tab=>{
+        tab.style.display = "none";
+    });
+    document.getElementById(tabName).style.display = "block";
+}
+
+// Load data functions
+async function loadUsers(){
+    const res = await fetch(`${BASE_URL}/admin/users`);
+    const users = await res.json();
+    const tbody = document.getElementById("usersTableBody");
+    tbody.innerHTML = "";
+    users.forEach(u=>{
+        tbody.innerHTML += `<tr>
+            <td>${u.name}</td>
+            <td>${u.email}</td>
+            <td>${u.password}</td>
+        </tr>`;
+    });
+}
+
+async function loadBookings(){
+    const res = await fetch(`${BASE_URL}/admin/bookings`);
+    const bookings = await res.json();
+    const tbody = document.getElementById("bookingsTableBody");
+    tbody.innerHTML = "";
+    bookings.forEach(b=>{
+        tbody.innerHTML += `<tr>
+            <td>${b.name}</td>
+            <td>${b.email}</td>
+            <td>${b.destination}</td>
+        </tr>`;
+    });
+}
+
+async function loadReviews(){
+    const res = await fetch(`${BASE_URL}/admin/reviews`);
+    const reviews = await res.json();
+    const tbody = document.getElementById("reviewsTableBody");
+    tbody.innerHTML = "";
+    reviews.forEach(r=>{
+        tbody.innerHTML += `<tr>
+            <td>${r.place}</td>
+            <td>${r.rating}</td>
+            <td>${r.review}</td>
+        </tr>`;
+    });
+}
+
+async function loadContacts(){
+    const res = await fetch(`${BASE_URL}/admin/contacts`);
+    const contacts = await res.json();
+    const tbody = document.getElementById("contactsTableBody");
+    tbody.innerHTML = "";
+    contacts.forEach(c=>{
+        tbody.innerHTML += `<tr>
+            <td>${c.name}</td>
+            <td>${c.phone}</td>
+            <td>${c.service}</td>
+            <td>${c.message}</td>
+        </tr>`;
+    });
+}
+
+// Show first tab by default
+showTab('users');
+loadUsers();
+loadBookings();
+loadReviews();
+loadContacts();
+</script>
+
 </body>
 </html>

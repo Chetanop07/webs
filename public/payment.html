@@ -1,42 +1,99 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Himachal Tourism - Payment</title>
+    <title>Payment - Himachal Tourism</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body { font-family: Arial, sans-serif; background: #f0f2f5; margin: 0; padding: 0; }
+        header { background: #2a5d84; color: white; padding: 15px; text-align: center; }
+        nav a { color: white; margin: 0 10px; text-decoration: none; font-weight: bold; }
+        .container { max-width: 500px; margin: 50px auto; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); text-align: center; }
+        h2 { color: #2a5d84; margin-bottom: 20px; }
+        img.qr { width: 200px; margin: 20px 0; }
+        label { display: block; margin-top: 15px; font-weight: bold; text-align: left; }
+        input { width: 100%; padding: 10px; margin-top: 5px; border-radius: 5px; border: 1px solid #ccc; font-size: 1em; }
+        button { background: #2a5d84; color: white; padding: 10px 15px; border: none; cursor: pointer; border-radius: 5px; margin-top: 20px; font-size: 1em; width: 100%; }
+        button:hover { opacity: 0.9; }
+        .success, .error { margin-top: 20px; padding: 10px; border-radius: 5px; display: none; }
+        .success { background: #d4edda; color: #155724; }
+        .error { background: #f8d7da; color: #721c24; }
+    </style>
 </head>
 <body>
-  <h1>Payment</h1>
-  <form id="paymentForm">
-    <input type="text" name="name" placeholder="Name" required />
-    <input type="email" name="email" placeholder="Email" required />
-    <input type="text" name="destination" placeholder="Destination" required />
-    <input type="number" name="amount" placeholder="Amount" required />
-    <button type="submit">Pay</button>
-  </form>
 
-  <script>
-    const BASE_URL = window.location.hostname.includes("localhost")
-      ? "http://localhost:3000"
-      : "https://webs-1-aya0.onrender.com";
+<header>
+    <h1>Himachal Tourism</h1>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="login.html">Login</a>
+        <a href="register.html">Register</a>
+        <a href="contact.html">Contact</a>
+        <a href="booking.html">Booking</a>
+    </nav>
+</header>
 
-    document.getElementById("paymentForm").addEventListener("submit", async (e) => {
-      e.preventDefault();
-      const form = e.target;
-      const data = { name: form.name.value, email: form.email.value, destination: form.destination.value, amount: form.amount.value };
-      try {
-        const res = await fetch(`${BASE_URL}/payment`, { // you need to add /payment in your server
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(data)
+<div class="container">
+    <h2>Make Payment</h2>
+    <p>Scan the QR code below to pay via UPI:</p>
+    <img src="images/GooglePay_QR.png" alt="UPI QR Code" class="qr">
+    <p>Or use your UPI app to pay to: <strong>fflegend2004-2@okicici</strong></p>
+
+    <form id="paymentForm">
+        <label for="name">Name</label>
+        <input type="text" id="name" placeholder="Enter your name" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="Enter your email" required>
+
+        <label for="amount">Amount (INR)</label>
+        <input type="number" id="amount" placeholder="Enter amount paid" required>
+
+        <button type="submit">Confirm Payment</button>
+    </form>
+
+    <div class="success" id="successMsg">Payment confirmed! Thank you.</div>
+    <div class="error" id="errorMsg">Error submitting payment. Please try again.</div>
+</div>
+
+<script>
+const BASE_URL = window.location.hostname.includes("localhost") 
+    ? "http://localhost:3000" 
+    : "https://webs-1-aya0.onrender.com";
+
+const form = document.getElementById("paymentForm");
+form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const amount = document.getElementById("amount").value;
+
+    try {
+        // If you have a /payment endpoint in backend, replace /submit with /payment
+        const res = await fetch(`${BASE_URL}/submit`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ name, email, destination: "Payment", amount })
         });
-        alert(await res.text());
-        form.reset();
-      } catch (err) {
+
+        const data = await res.text();
+
+        if (res.ok) {
+            document.getElementById("successMsg").style.display = "block";
+            document.getElementById("errorMsg").style.display = "none";
+            form.reset();
+        } else {
+            document.getElementById("errorMsg").innerText = data;
+            document.getElementById("errorMsg").style.display = "block";
+            document.getElementById("successMsg").style.display = "none";
+        }
+    } catch (err) {
         console.error(err);
-        alert("Error processing payment");
-      }
-    });
-  </script>
+        document.getElementById("errorMsg").innerText = "Error connecting to server.";
+        document.getElementById("errorMsg").style.display = "block";
+    }
+});
+</script>
+
 </body>
 </html>

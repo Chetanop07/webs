@@ -1,31 +1,105 @@
-<h1>Book a Destination</h1>
-<form id="bookingForm">
-  <input type="text" name="name" placeholder="Name" required />
-  <input type="email" name="email" placeholder="Email" required />
-  <input type="text" name="destination" placeholder="Destination" required />
-  <button type="submit">Book</button>
-</form>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book a Tour - Himachal Tourism</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body { font-family: Arial, sans-serif; background: #f0f2f5; margin: 0; padding: 0; }
+        header { background: #2a5d84; color: white; padding: 15px; text-align: center; }
+        nav a { color: white; margin: 0 10px; text-decoration: none; font-weight: bold; }
+        .container { max-width: 600px; margin: 50px auto; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        h2 { text-align: center; color: #2a5d84; margin-bottom: 20px; }
+        label { display: block; margin-top: 15px; font-weight: bold; }
+        input, select { width: 100%; padding: 10px; margin-top: 5px; border-radius: 5px; border: 1px solid #ccc; font-size: 1em; }
+        button { background: #2a5d84; color: white; padding: 10px 15px; border: none; cursor: pointer; border-radius: 5px; margin-top: 20px; font-size: 1em; width: 100%; }
+        button:hover { opacity: 0.9; }
+        .success, .error { margin-top: 20px; padding: 10px; border-radius: 5px; display: none; }
+        .success { background: #d4edda; color: #155724; }
+        .error { background: #f8d7da; color: #721c24; }
+    </style>
+</head>
+<body>
 
+<header>
+    <h1>Himachal Tourism</h1>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="login.html">Login</a>
+        <a href="register.html">Register</a>
+        <a href="contact.html">Contact</a>
+        <a href="admin.html">Admin</a>
+    </nav>
+</header>
+
+<div class="container">
+    <h2>Contact Us</h2>
+    <form id="contactForm">
+        <label for="name">Name</label>
+        <input type="text" id="name" placeholder="Enter your full name" required>
+        <small>Example: John Doe</small>
+
+        <label for="phone">Phone</label>
+        <input type="text" id="phone" placeholder="Enter your phone number" required>
+        <small>Example: +91 98765 43210</small>
+
+        <label for="service">Service</label>
+        <select id="service" required>
+            <option value="">Select a service</option>
+            <option value="Tour Booking">Tour Booking</option>
+            <option value="Hotel Inquiry">Hotel Inquiry</option>
+            <option value="Other">Other</option>
+        </select>
+        <small>Choose the service you want help with</small>
+
+        <label for="message">Message</label>
+        <textarea id="message" placeholder="Write your message here..." required></textarea>
+        <small>Explain your request or inquiry in detail</small>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <div class="success" id="successMsg">Your message has been sent successfully!</div>
+    <div class="error" id="errorMsg">Error sending message. Please try again.</div>
+</div>
 <script>
-const BASE_URL = window.location.hostname.includes("localhost")
-  ? "http://localhost:3000"
-  : "https://webs-1-aya0.onrender.com";
+const BASE_URL = window.location.hostname.includes("localhost") 
+    ? "http://localhost:3000" 
+    : "https://webs-1-aya0.onrender.com";
 
-document.getElementById("bookingForm").addEventListener("submit", async (e) => {
-  e.preventDefault();
-  const form = e.target;
-  const data = { name: form.name.value, email: form.email.value, destination: form.destination.value };
-  try {
-    const res = await fetch(`${BASE_URL}/submit`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data)
-    });
-    alert(await res.text());
-    form.reset();
-  } catch (err) {
-    console.error(err);
-    alert("Error submitting booking");
-  }
+const form = document.getElementById("bookingForm");
+form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const destination = document.getElementById("destination").value;
+    const date = document.getElementById("date").value;
+
+    try {
+        const res = await fetch(`${BASE_URL}/submit`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ name, email, destination, date })
+        });
+
+        const data = await res.text();
+
+        if (res.ok) {
+            document.getElementById("successMsg").style.display = "block";
+            document.getElementById("errorMsg").style.display = "none";
+            form.reset();
+        } else {
+            document.getElementById("errorMsg").innerText = data;
+            document.getElementById("errorMsg").style.display = "block";
+            document.getElementById("successMsg").style.display = "none";
+        }
+    } catch (err) {
+        console.error(err);
+        document.getElementById("errorMsg").style.display = "block";
+        document.getElementById("successMsg").style.display = "none";
+    }
 });
 </script>
+
+</body>
+</html>
