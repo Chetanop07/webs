@@ -1,0 +1,31 @@
+<h1>Submit a Review</h1>
+<form id="reviewForm">
+  <input type="text" name="place" placeholder="Place" required />
+  <input type="number" name="rating" placeholder="Rating (1-5)" min="1" max="5" required />
+  <textarea name="review" placeholder="Your Review" required></textarea>
+  <button type="submit">Submit Review</button>
+</form>
+
+<script>
+const BASE_URL = window.location.hostname.includes("localhost")
+  ? "http://localhost:3000"
+  : "https://webs-1-aya0.onrender.com";
+
+document.getElementById("reviewForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const form = e.target;
+  const data = { place: form.place.value, rating: parseInt(form.rating.value), review: form.review.value };
+  try {
+    const res = await fetch(`${BASE_URL}/review`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data)
+    });
+    alert(await res.text());
+    form.reset();
+  } catch (err) {
+    console.error(err);
+    alert("Error submitting review");
+  }
+});
+</script>

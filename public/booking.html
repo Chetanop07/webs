@@ -1,0 +1,31 @@
+<h1>Book a Destination</h1>
+<form id="bookingForm">
+  <input type="text" name="name" placeholder="Name" required />
+  <input type="email" name="email" placeholder="Email" required />
+  <input type="text" name="destination" placeholder="Destination" required />
+  <button type="submit">Book</button>
+</form>
+
+<script>
+const BASE_URL = window.location.hostname.includes("localhost")
+  ? "http://localhost:3000"
+  : "https://webs-1-aya0.onrender.com";
+
+document.getElementById("bookingForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const form = e.target;
+  const data = { name: form.name.value, email: form.email.value, destination: form.destination.value };
+  try {
+    const res = await fetch(`${BASE_URL}/submit`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data)
+    });
+    alert(await res.text());
+    form.reset();
+  } catch (err) {
+    console.error(err);
+    alert("Error submitting booking");
+  }
+});
+</script>

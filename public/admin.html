@@ -1,20 +1,40 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Himachal Tourism - Admin</title>
+</head>
 <body>
-<h1>Admin Dashboard</h1>
-<button onclick="loadData('users')">Users</button>
-<button onclick="loadData('bookings')">Bookings</button>
-<button onclick="loadData('reviews')">Reviews</button>
-<button onclick="loadData('contacts')">Contacts</button>
+  <h1>Admin Panel</h1>
+  <button onclick="fetchUsers()">View Users</button>
+  <button onclick="fetchBookings()">View Bookings</button>
+  <button onclick="fetchContacts()">View Contacts</button>
+  <button onclick="fetchReviews()">View Reviews</button>
 
-<pre id="data"></pre>
+  <pre id="output" style="background:#eee; padding:10px;"></pre>
 
-<script>
-async function loadData(type){
-    const res = await fetch('https://your-backend-url.onrender.com/admin/'+type);
-    const data = await res.json();
-    document.getElementById('data').innerText = JSON.stringify(data,null,2);
-}
-</script>
+  <script>
+    const BASE_URL = window.location.hostname.includes("localhost")
+      ? "http://localhost:3000"
+      : "https://webs-1-aya0.onrender.com";
+
+    async function fetchUsers() {
+      const res = await fetch(`${BASE_URL}/admin/users`);
+      document.getElementById("output").innerText = JSON.stringify(await res.json(), null, 2);
+    }
+    async function fetchBookings() {
+      const res = await fetch(`${BASE_URL}/admin/bookings`);
+      document.getElementById("output").innerText = JSON.stringify(await res.json(), null, 2);
+    }
+    async function fetchContacts() {
+      const res = await fetch(`${BASE_URL}/admin/contacts`);
+      document.getElementById("output").innerText = JSON.stringify(await res.json(), null, 2);
+    }
+    async function fetchReviews() {
+      const res = await fetch(`${BASE_URL}/admin/reviews`);
+      document.getElementById("output").innerText = JSON.stringify(await res.json(), null, 2);
+    }
+  </script>
 </body>
 </html>
