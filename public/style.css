@@ -20,7 +20,7 @@ nav a { color:white; margin:10px; text-decoration:none; }
     transition: transform 0.3s, box-shadow 0.3s;
     text-decoration: none; /* remove underline */
     color: white; /* card text */
-    display: flex;
+    display: block;
     flex-direction: column;
     justify-content: space-between;
 }
@@ -33,7 +33,8 @@ height :150px;
 .place-img {
     width: 100%;
     height: 180px; 
-    object-fit: cover; 
+    object-fit: cover;
+    border-radius: 10px; 
     transition: transform 0.3s;
 }
 
