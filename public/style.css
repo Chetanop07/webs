@@ -309,3 +309,49 @@ body.dark-mode .contact-banner {
 body.dark-mode .watermark-fixed {
     color: #aaa;
 }
+/* Place page content text */
+.place-content {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+
+    background: white;
+    border-radius: 12px;
+
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Paragraph text */
+.place-content p {
+    color: #333;   /* DARK TEXT (FIX) */
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+/* Headings */
+.place-content h2,
+.place-content h3 {
+    color: #222;
+    margin-bottom: 10px;
+}
+body.dark-mode .place-content {
+    background: #1e1e1e;
+}
+
+body.dark-mode .place-content p {
+    color: #ddd;
+}
+
+body.dark-mode .place-content h2,
+body.dark-mode .place-content h3 {
+    color: #fff;
+}
+/* FIX: Force visible text in place pages */
+.place-content,
+.place-content p,
+.place-content h1,
+.place-content h2,
+.place-content h3,
+.place-content li {
+    color: #222 !important;
+}
