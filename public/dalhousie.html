@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Dalhousie - Travel Guide</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+body{
+    margin:0;
+    font-family:'Poppins',sans-serif;
+    background:#f4f7fb;
+    color:#333;
+}
+
+/* Hero */
+.hero{
+    height:60vh;
+    background:url('images/dalhousie.jpg') center/cover;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+    text-align:center;
+    position:relative;
+}
+
+.hero::after{
+    content:"";
+    position:absolute;
+    top:0;left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.4);
+}
+
+.hero h1{
+    position:relative;
+    font-size:3rem;
+}
+
+/* Content */
+.container{
+    padding:40px;
+    max-width:1000px;
+    margin:auto;
+}
+
+.card{
+    background:white;
+    padding:20px;
+    border-radius:15px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.1);
+    margin-bottom:20px;
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+}
+
+/* Button */
+button{
+    background:#2a5d84;
+    color:white;
+    border:none;
+    padding:10px 15px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#1d3f5c;
+}
+</style>
+</head>
+
+<body>
+
+<div class="hero">
+    <h1>Dalhousie</h1>
+</div>
+
+<div class="container">
+
+    <div class="card">
+        <h2>🌲 About Dalhousie</h2>
+        <p>
+            Dalhousie is a peaceful hill station in Himachal Pradesh known for its colonial-era architecture,
+            pine forests, and scenic mountain views. It is perfect for relaxation and nature walks.
+        </p>
+    </div>
+
+    <div class="card">
+        <h2>📍 Top Attractions</h2>
+        <ul>
+            <li>Kalatop Wildlife Sanctuary</li>
+            <li>Panchpula Waterfall</li>
+            <li>Khajjiar (Mini Switzerland of India)</li>
+            <li>St. John's Church</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>🌤️ Best Time to Visit</h2>
+        <p>March to June (pleasant weather) & December (snowfall experience).</p>
+    </div>
+
+    <div class="card">
+        <h2>💡 Travel Tips</h2>
+        <p>
+            Carry warm clothes, comfortable shoes, and book hotels in advance during peak season.
+        </p>
+    </div>
+
+    <button onclick="history.back()">⬅ Go Back</button>
+
+</div>
+
+</body>
+</html>

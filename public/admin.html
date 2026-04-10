@@ -3,6 +3,33 @@
 <head>
     <title>Admin Panel - Himachal Tourism</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+.tab-btn {
+    padding: 10px 15px;
+    margin: 5px;
+    border-radius: 8px;
+    border: none;
+    background: #2a5d84;
+    color: white;
+    cursor: pointer;
+}
+
+.tab-btn:hover {
+    background: #1d3f5c;
+}
+
+table {
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+th {
+    background: #2a5d84;
+    color: white;
+}
+</style>
     <script>
         // Simple password protection
         const ADMIN_PASSWORD = "420420420"; 
@@ -20,10 +47,10 @@
 </header>
 
 <nav style="display:flex; justify-content:center; margin:20px 0;">
-    <button onclick="showTab('users')" style="margin:0 10px; padding:10px 20px; cursor:pointer;">Users</button>
-    <button onclick="showTab('bookings')" style="margin:0 10px; padding:10px 20px; cursor:pointer;">Bookings</button>
-    <button onclick="showTab('reviews')" style="margin:0 10px; padding:10px 20px; cursor:pointer;">Reviews</button>
-    <button onclick="showTab('contacts')" style="margin:0 10px; padding:10px 20px; cursor:pointer;">Contacts</button>
+<button class="tab-btn" onclick="showTab('users')">Users</button>
+<button class="tab-btn" onclick="showTab('bookings')">Bookings</button>
+<button class="tab-btn" onclick="showTab('reviews')">Reviews</button>
+<button class="tab-btn" onclick="showTab('contacts')">Contacts</button>
 </nav>
 
 <div id="users" class="tab" style="display:none; padding:20px;">

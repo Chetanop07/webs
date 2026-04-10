@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Kinnaur - Travel Guide</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+body{
+    margin:0;
+    font-family:'Poppins',sans-serif;
+    background:#f4f7fb;
+    color:#333;
+}
+
+/* Hero */
+.hero{
+    height:60vh;
+    background:url('images/kinnaur.jpg') center/cover;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+    text-align:center;
+    position:relative;
+}
+
+.hero::after{
+    content:"";
+    position:absolute;
+    top:0;left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.45);
+}
+
+.hero h1{
+    position:relative;
+    font-size:3rem;
+}
+
+/* Content */
+.container{
+    padding:40px;
+    max-width:1000px;
+    margin:auto;
+}
+
+.card{
+    background:white;
+    padding:20px;
+    border-radius:15px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.1);
+    margin-bottom:20px;
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+}
+
+/* Button */
+button{
+    background:#2a5d84;
+    color:white;
+    border:none;
+    padding:10px 15px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#1d3f5c;
+}
+</style>
+</head>
+
+<body>
+
+<div class="hero">
+    <h1>Kinnaur</h1>
+</div>
+
+<div class="container">
+
+    <div class="card">
+        <h2>🏔️ About Kinnaur</h2>
+        <p>
+            Kinnaur, created in 1960 and headquartered at Reckong Peo, is a scenic, tribal district in Himachal Pradesh, India, known for its high-altitude mountains (1,600m–6,816m), apple orchards, and a unique blend of Hindu and Buddhist cultures. It lies along the old Indo-Tibetan trade route, featuring stunning valleys like Sangla and villages such as Chitkul. 
+
+   Key Highlights of Kinnaur
+Geography: Situated in the northeast of Himachal Pradesh, bounded by the Zanskar, Himalaya, and Dhauladhar ranges.
+Key Destinations:
+Chitkul: Known as the last inhabited village near the Indo-Tibetan border.
+Sangla Valley (Baspa Valley): Famous for its scenic beauty and Apple/Apricot orchards.
+Kalpa: Known for its direct view of the Kinnaur Kailash range.
+Kinnaur Kailash: A mountain considered sacred to Lord Shiva and Parvati.
+Culture & People: The region has a distinct cultural identity, with inhabitants known for their hardiness and adherence to tradition. Hinduism and Buddhism coexist, particularly in middle Kinnaur.
+Activities: Popular for trekking, hiking, birdwatching (e.g., in Rakcham Wildlife Sanctuary), and exploring local temples and forts.
+
+Information for Travelers
+Location: The district is accessible via the old Hindustan-Tibet Road (NH-22).
+Access: It is approximately 267 km from the nearest airport and 244 km from the nearest railhead, typically via Shimla.
+Requirements: A valid photo ID is necessary, and for specific treks like Kinnaur Kailash, a medical fitness certificate may be required
+    </div>
+
+    <div class="card">
+        <h2>📍 Top Attractions</h2>
+        <ul>
+            <li>Sangla Valley</li>
+            <li>Chitkul Village (Last Village of India)</li>
+            <li>Kalpa Village</li>
+            <li>Reckong Peo</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>🌤️ Best Time to Visit</h2>
+        <p>April to October (pleasant weather and clear roads).</p>
+    </div>
+
+    <div class="card">
+        <h2>💡 Travel Tips</h2>
+        <p>
+            Carry ID proof, warm clothes even in summer, and be prepared for long mountain travel routes.
+        </p>
+    </div>
+
+    <button onclick="history.back()">⬅ Go Back</button>
+
+</div>
+
+</body>
+</html>

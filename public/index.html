@@ -49,8 +49,27 @@
         }
     </style>
 </head>
-<body>
+<script>
+function addWishlist(place){
+    let list = JSON.parse(localStorage.getItem("wishlist") || "[]");
+    if(!list.includes(place)){
+        list.push(place);
+        localStorage.setItem("wishlist", JSON.stringify(list));
+        alert(place + " added to wishlist ❤️");
+    }
+}
 
+function openPlace(place){
+    window.location.href = place.toLowerCase() + ".html";
+}
+
+// Show wishlist in console (optional)
+console.log("Wishlist:", localStorage.getItem("wishlist"));
+</script>
+<body>
+<div class="contact-banner" onclick="location.href='contact.html'">
+    📞 Contact Us for Hotel and Tour Booking
+</div>
 <header>
     <h1>Explore Himachal Pradesh</h1>
     <nav>
@@ -59,71 +78,102 @@
         <a href="contact.html">Contact</a>
         <a href="payment.html">Payment</a>
         <a href="admin.html">Admin</a>
+        <button id="themeToggle">🌙 Dark Mode</button>
     </nav>
 </header>
 
 <section class="hero">
     <h2 class="fade" style="color: #ff5733;">Discover the Beauty of Mountains</h2>
 </section>
+    <div class="places-container">
 
-<div class="gallery">
+    <div class="card">
+        <img src="images/manali.jpg">
+        <div class="card-body">
+            <h3>Manali</h3>
+            <p>Snow-covered mountains, adventure sports & scenic beauty.</p>
+            <button onclick="location.href='manali.html'">Explore</button>
+        </div>
+    </div>
 
-    <a href="manali.html" class="card">
-        <img src="images/manali.jpg" class="place-img" alt="Manali">
-        <h3>Manali</h3>
-    </a>
-
-    <a href="shimla.html" class="card">
-        <img src="images/shimla.jpg" class="place-img" alt="Shimla">
-        <h3>Shimla</h3>
-    </a>
-
-    <a href="kasol.html" class="card">
-        <img src="images/kasol.jpg" class="place-img" alt="Kasol">
-        <h3>Kasol</h3>
-    </a>
-
-    <a href="chitkul.html" class="card">
-        <img src="images/chitkul.jpg" class="place-img" alt="Chitkul">
-        <h3>Chitkul</h3>
-    </a>
-
-    <a href="spiti.html" class="card">
-        <img src="images/spiti.jpg" class="place-img" alt="Spiti Valley">
-        <h3>Spiti</h3>
-    </a>
-
-    <a href="chamba.html" class="card">
-        <img src="images/chamba.jpg" class="place-img" alt="Chamba">
-        <h3>Chamba</h3>
-    </a>
-
-    <a href="dharamshala.html" class="card">
-        <img src="images/dharamshala.jpg" class="place-img" alt="Dharamshala">
-        <h3>Dharamshala</h3>
-    </a>
-
-    <a href="kullu.html" class="card">
-        <img src="images/kullu.jpg" class="place-img" alt="Kullu">
-        <h3>Kullu</h3>
-    </a>
-
-    <a href="rohru.html" class="card">
-        <img src="images/rohru.jpg" class="place-img" alt="Rohru">
-        <h3>Rohru</h3>
-    </a>
-
-    <a href="triund.html" class="card">
-        <img src="images/triund.jpg" class="place-img" alt="Triund">
-        <h3>Triund</h3>
-    </a>
+    <div class="card">
+        <img src="images/shimla.jpg">
+        <div class="card-body">
+            <h3>Shimla</h3>
+            <p>Queen of hills with colonial charm and Mall Road vibes.</p>
+            <button onclick="location.href='shimla.html'">Explore</button>
+        </div>
+    </div>
+     <div class="card">
+        <img src="images/kasol.jpg">
+        <div class="card-body">
+            <h3>Kasol</h3>
+            <p>Hippie paradise in Parvati Valley with riverside cafés & trekking.</p>
+            <button onclick="location.href='kasol.html'">Explore</button>
+        </div>
+    </div> <div class="card">
+        <img src="images/dalhousie.jpg">
+        <div class="card-body">
+            <h3>Dalhousie</h3>
+            <p>Peaceful colonial town with pine forests and scenic views.</p>
+            <button onclick="location.href='dalhousie.html'">Explore</button>
+        </div>
+    </div> <div class="card">
+        <img src="images/dharamshala.jpg">
+        <div class="card-body">
+            <h3>Dharamshala</h3>
+            <p>Home of Dalai Lama, monasteries and stunning Dhauladhar views.</p>
+            <button onclick="location.href='dharamshala.html'">Explore</button>
+        </div>
+    </div> <div class="card">
+        <img src="images/kullu.jpg">
+        <div class="card-body">
+            <h3>Kullu</h3>
+            <p>Valley of Gods with river Beas, temples and adventure sports.</p>
+            <button onclick="location.href='kullu.html'">Explore</button>
+        </div>
+    </div> <div class="card">
+        <img src="images/spiti.jpg">
+        <div class="card-body">
+            <h3>Spiti Valley </h3>
+            <p>Cold desert mountains, monasteries & breathtaking landscapes</p>
+            <button onclick="location.href='spiti.html'">Explore</button>
+        </div>
+    </div> 
+    <div class="card">
+        <img src="images/kinnaur.jpg">
+        <div class="card-body">
+            <h3>Kinnaur</h3>
+            <p>Apple orchards, tribal culture & stunning Himalayan valleys.</p>
+            <button onclick="location.href='kinnaur.html'">Explore</button>
+        </div>
+    </div> 
+    <div class="card">
+        <img src="images/chitkul.jpg">
+        <div class="card-body">
+            <h3>Chitkul</h3>
+            <p>Last village of India having very clean AQI</p>
+            <button onclick="location.href='chitkul.html'">Explore</button>
+        </div>
+    </div>
+    <div class="card">
+        <img src="images/sangla.jpg">
+        <div class="card-body">
+            <h3>Sangla Valley </h3>
+            <p>Breathtaking Himalayan destination in Kinnaur</p>
+            <button onclick="location.href='sangla.html'">Explore</button>
+        </div>
+    </div>
+    <div class="card">
+        <img src="images/kalpa.jpg">
+        <div class="card-body">
+            <h3>kalpa</h3>
+            <p>A small village lying above Reckong Peo</p>
+            <button onclick="location.href='kalpa.html'">Explore</button>
+        </div>
+    </div>
 
 </div>
-
-<!-- ===== Watermark ===== -->
-<div class="watermark">© CV</div>
-</div>
-
 <!-- Submit Review Section -->
 <section id="submitReviewSection">
     <h2 style="text-align:center;">Submit Your Review</h2>
@@ -301,6 +351,30 @@
     });
     
 </script>
+<script>
+const toggleBtn = document.getElementById("themeToggle");
 
+// Load saved theme
+if(localStorage.getItem("theme") === "dark"){
+    document.body.classList.add("dark-mode");
+    toggleBtn.textContent = "☀️ Light Mode";
+}
+
+// Toggle theme
+toggleBtn.onclick = () => {
+    document.body.classList.toggle("dark-mode");
+
+    if(document.body.classList.contains("dark-mode")){
+        localStorage.setItem("theme", "dark");
+        toggleBtn.textContent = "☀️ Light Mode";
+    } else {
+        localStorage.setItem("theme", "light");
+        toggleBtn.textContent = "🌙 Dark Mode";
+    }
+};
+</script>
 </body>
+<div class="watermark-fixed">
+    © Created by Cv
+</div>
 </html>
